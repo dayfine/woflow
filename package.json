@@ -1,0 +1,28 @@
+{
+  "name": "woflow",
+  "version": "1.0.0",
+  "description": "A practical combo of calendar, to-do list, and timer.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dayfine/woflow.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dayfine/woflow/issues"
+  },
+  "homepage": "https://github.com/dayfine/woflow#readme",
+  "devDependencies": {
+    "concurrently": "^3.5.0",
+    "morgan": "^1.9.0"
+  },
+  "dependencies": {
+    "express": "^4.16.2",
+    "pg": "^7.3.0",
+    "sequelize": "^4.17.2"
+  }
+}
