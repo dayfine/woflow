@@ -1,4 +1,3 @@
-export const SET_TIMER = 'TIMER/SET'
-export const TOGGLE_TIMER = 'TIMER/TOGGLE'
-export const UPDATE_TIMER = 'TIMER/UPDATE'
-export const STOP_TIMER = 'TIMER/STOP'
+export const SET_TIME = 'TIMER/SET_TIME'
+export const SET_STATUS = 'TIMER/SET_STATUS'
+export const UPDATE_TIME = 'TIMER/UPDATE'

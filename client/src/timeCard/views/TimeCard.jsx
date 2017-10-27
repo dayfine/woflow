@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card'
-import FlatButton from 'material-ui/FlatButton'
 import TextField from 'material-ui/TextField'
 import Timer from './Timer'
 
@@ -16,18 +15,17 @@ const styles = {
   }
 }
 
-const TimeCard = () => {
+const TimeCard = props => {
+  // const { task } = props
+  // const project = task.project.name
   return (
     <Card>
-      <CardHeader style={{height: 200, backgroundColor: '#eee'}}>
+      <CardHeader style={{height: 160, backgroundColor: '#eee'}}>
         <TextField id='task' value='My Task' style={styles.task} />
         <TextField id='project' value='My Project' style={styles.project} />
       </CardHeader>
+      <Timer />
       <CardText />
-      <CardActions>
-        <Timer />
-        <FlatButton label='Action1' />
-      </CardActions>
     </Card>
   )
 }

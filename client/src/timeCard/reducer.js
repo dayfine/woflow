@@ -1,10 +1,5 @@
-import { SET_TIMER, TOGGLE_TIMER, UPDATE_TIMER, STOP_TIMER } from './actionTypes.js'
-
-const STATUS = {
-  STOPPED: 'stopped',
-  STARTED: 'started',
-  PAUSED: 'paused'
-}
+import { SET_TIME, SET_STATUS, UPDATE_TIME } from './actionTypes.js'
+import { STATUS } from './constants'
 
 const initialState = {
   totalSeconds: 3599,
@@ -13,25 +8,14 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case SET_TIMER:
-      const newState = {
-        totalSeconds: action.totalSeconds,
-        status: STATUS.STARTED
-      }
-      return newState
+    case SET_TIME:
+      return { ...state, totalSeconds: action.totalSeconds }
 
-    case TOGGLE_TIMER:
-      let newStatus
-      if (state.status === 'stopped') newStatus = STATUS.STARTED
-      if (state.status === 'paused') newStatus = STATUS.PAUSED
-      return { ...state, status: newStatus }
+    case SET_STATUS:
+      return { ...state, status: action.status }
 
-    case UPDATE_TIMER:
-      const newTime = action.something // change time here
-      return { ...state, totalSeconds: newTime }
-
-    case STOP_TIMER:
-      return initialState
+    case UPDATE_TIME:
+      return { ...state, totalSeconds: state.totalSeconds + action.seconds }
 
     default:
       return state
