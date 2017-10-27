@@ -1,4 +1,14 @@
 import React from 'react'
+import Control from './Control'
+import CountDownForm from './CountDownForm'
+
+const CountDown = () => {
+  const renderControl = () => {
+    return countDownStatus === 'counting'
+      ? (<Control />)
+      : (<CountDownForm onSetCountdown={this.handleSetCountdown} />)
+  }
+}
 
 const Clock = ({ totalSeconds }) => {
   return (

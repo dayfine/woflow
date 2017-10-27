@@ -5,13 +5,15 @@ import storage from 'redux-persist/es/storage'
 import { createLogger } from 'redux-logger'
 import { composeWithDevTools } from 'redux-devtools-extension'
 
+import {reducer as timeCardReducers} from './timeCard'
+
 const config = {
   key: 'root', // key is required
   storage // storage is now required
 }
 
 const rootReducer = combineReducers({
-
+  timeCard: timeCardReducers
 })
 
 const reducer = persistReducer(config, rootReducer)
