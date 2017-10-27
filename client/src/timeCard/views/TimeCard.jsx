@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card'
 import FlatButton from 'material-ui/FlatButton'
 import TextField from 'material-ui/TextField'
-import Clock from './Timer'
+import Timer from './Timer'
 
 const styles = {
   task: {
@@ -25,7 +25,7 @@ const TimeCard = () => {
       </CardHeader>
       <CardText />
       <CardActions>
-        <Clock totalSeconds={10000} />
+        <Timer totalSeconds={10000} />
         <FlatButton label='Action1' />
       </CardActions>
     </Card>
