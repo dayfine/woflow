@@ -25,7 +25,7 @@ const TimeCard = () => {
       </CardHeader>
       <CardText />
       <CardActions>
-        <Timer totalSeconds={10000} />
+        <Timer />
         <FlatButton label='Action1' />
       </CardActions>
     </Card>

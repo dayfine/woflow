@@ -7,7 +7,7 @@ const STATUS = {
 }
 
 const initialState = {
-  totalSeconds: 0,
+  totalSeconds: 3599,
   status: STATUS.STOPPED
 }
 
