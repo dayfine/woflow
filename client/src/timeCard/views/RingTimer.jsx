@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { CircularProgress } from 'material-ui/Progress'
 
 const RingTimer = props => {
-  const { timePassed, totalSeconds } = props.timeCard
+  const { timePassed, totalSeconds } = props.timer
   const colors = props.colors
   // some style so to be used for modal/fullscreen
   return (
@@ -21,7 +21,7 @@ const RingTimer = props => {
 }
 
 const mapState = state => ({
-  timeCard: state.timeCard,
+  timer: state.timer,
   colors: state.setting.colors
 })
 

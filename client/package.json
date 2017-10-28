@@ -9,9 +9,11 @@
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-motion": "^0.5.2",
+    "react-number-format": "^3.0.0-beta3",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.14",
+    "react-text-mask": "^5.0.2",
     "redux": "^3.7.2",
     "redux-persist": "^5.0.1",
     "redux-thunk": "^2.2.0",
@@ -21,10 +23,15 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "devDependencies": {
     "redux-devtools-extension": "^2.13.2",
-    "redux-logger": "^3.0.6"
+    "redux-logger": "^3.0.6",
+    "@storybook/react": "^3.2.13",
+    "@storybook/addon-actions": "^3.2.13",
+    "@storybook/addon-links": "^3.2.13"
   }
 }

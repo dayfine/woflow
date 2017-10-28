@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import Timer from './Timer'
 import RingTimer from './RingTimer'
 
-import Card, { CardHeader, CardContent } from 'material-ui/Card'
+import Card, { CardContent } from 'material-ui/Card'
 import TextField from 'material-ui/TextField'
 import Divider from 'material-ui/Divider'
 import Typography from 'material-ui/Typography'
@@ -20,8 +20,6 @@ const styles = {
 }
 
 const TimeCard = props => {
-  // const { task } = props
-  // const project = task.project.name
   return (
     <Card>
       <CardContent>
@@ -38,8 +36,26 @@ const TimeCard = props => {
         <Divider />
       </CardContent>
     </Card>
-
   )
 }
 
 export default connect(null, null)(TimeCard)
+
+  // <TextField
+  //   id='select-project'
+  //   select
+  //   label='Project'
+  //   value='Stackathon'
+  //   onChange={this.handleChange}
+  //   SelectProps={{
+  //     MenuProps: {
+  //     }
+  //   }}
+  //   margin='normal'
+  //     >
+  //   {[1, 2, 3].map(option => (
+  //     <MenuItem key={option.value} value={option.value}>
+  //       {option.label}
+  //     </MenuItem>
+  //       ))}
+  // </TextField>

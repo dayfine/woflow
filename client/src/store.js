@@ -12,7 +12,7 @@ import { projects, blocks } from './demo-seed'
 
 const
   rootReducer = combineReducers({
-    timeCard: timeCardReducer,
+    timer: timeCardReducer,
     events: dayFlowReducer,
     setting: settingReducer
   })
@@ -20,7 +20,7 @@ const
   // reducer = persistReducer(persistConfig, rootReducer)
 
 const initialState = {
-  timeCard: {
+  timer: {
     totalSeconds: 300,
     timePassed: 0,
     status: 'stopped'
