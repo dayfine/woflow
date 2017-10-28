@@ -14,7 +14,7 @@ const block1 = mori.hashMap(
   'duration', 1800,
   'priority', 2,
   'projectId', 2,
-  'pinned', false
+  'pinned', false,
   'recurrence', null
 )
 
@@ -24,7 +24,7 @@ const block2 = mori.hashMap(
   'duration', 10800,
   'priority', 3,
   'projectId', 1,
-  'pinned', false
+  'pinned', false,
   'recurrence', null
 )
 
@@ -34,7 +34,7 @@ const block3 = mori.hashMap(
   'duration', 2700,
   'priority', 12,
   'projectId', 3,
-  'pinned', false
+  'pinned', false,
   'recurrence', null
 )
 
@@ -44,7 +44,7 @@ const block4 = mori.hashMap(
   'duration', 3600,
   'priority', 4,
   'projectId', 4,
-  'pinned', false
+  'pinned', false,
   'recurrence', null
 )
 
@@ -54,7 +54,7 @@ const block5 = mori.hashMap(
   'duration', 11600,
   'priority', 1,
   'projectId', 1,
-  'pinned', false
+  'pinned', false,
   'recurrence', null
 )
 
@@ -64,7 +64,7 @@ const block6 = mori.hashMap(
   'duration', 7500,
   'priority', 7,
   'projectId', null,
-  'pinned', false
+  'pinned', false,
   'recurrence', null
 )
 
@@ -74,7 +74,7 @@ const block7 = mori.hashMap(
   'duration', 3600,
   'priority', 10,
   'projectId', null,
-  'pinned', true
+  'pinned', true,
   'recurrence', null
 )
 
@@ -84,21 +84,22 @@ const lunch = mori.hashMap(
   'duration', 3600,
   'priority', -1,
   'projectId', null,
-  'pinned', true
+  'pinned', true,
   'recurrence', mori.hashMap(
       'frequency', 'daily',
       'until', null,
-      'occurence', null
+      'occurence', null,
+      'start', 43200
     )
 )
 
-export const blocks = mori.vector(
-  block1,
-  block2,
-  block3,
-  block4,
-  block5,
-  block6,
-  block7,
-  lunch
+export const blocks = mori.hashMap(
+  block1.id, block1,
+  block2.id, block2,
+  block3.id, block3,
+  block4.id, block4,
+  block5.id, block5,
+  block6.id, block6,
+  block7.id, block7,
+  lunch.id, lunch
 )
