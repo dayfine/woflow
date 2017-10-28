@@ -5,8 +5,9 @@ const start = now.getHours() + Math.floor(now.getMinutes() / 15) * 15
 console.log(start)
 const todayRemaining = 8
 
-export default (events, numDays) => {
+export default (events, setting) => {
   // Should first filter  recurring events v. nonrecurring events
+  const { daySpan, numDays } = setting
 
   let days = [[]], batchTotal = 0, dayIdx = 0, evtIdx = 0
   const evtKeys = mori.intoArray(mori.keys(events))

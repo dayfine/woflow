@@ -4,7 +4,9 @@ import { GridList, GridTile } from 'material-ui/GridList'
 const styles = {
   header: {
     textAlign: 'left',
-    paddingLeft: 15
+    paddingLeft: 15,
+    borderLeft: '1px solid #eee',
+    borderBottom: '1px solid #eee'
   },
   day: {
     fontSize: 20,
@@ -15,9 +17,6 @@ const styles = {
   date: {
     fontSize: 50,
     marginTop: -10
-  },
-  column: {
-    // borderStyle: 'solid'
   }
 }
 
@@ -43,10 +42,10 @@ const DayHeaders = props => {
   const { numDays } = props
   const daysArr = Array(...Array(numDays))
   return (
-    <GridList cols={numDays} cellHeight={100} >
+    <GridList cols={numDays} cellHeight={100} padding={0}>
       {daysArr.map((el, idx) => {
         return (
-          <GridTile cols={1} key={idx} style={styles.columm}>
+          <GridTile cols={1} key={idx}>
             { renderDate(addDay(today, idx))}
           </GridTile>
         )

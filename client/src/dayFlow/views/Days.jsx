@@ -13,19 +13,20 @@ const styles = {
 }
 
 const Days = props => {
-  const { eventsByDay, numDays } = props
+  const { eventsByDay } = props
+  const { numDays, daySpan } = props.setting
   return (
     <div className='days'>
       <GridList cols={12} cellHeight='auto'>
         <GridTile cols={1}>
-          <HourBar />
+          <HourBar daySpan={daySpan} />
         </GridTile>
         <GridTile cols={11}>
           <DayHeaders numDays={numDays} />
           <GridList
             cols={numDays}
             cellHeight='auto'
-            padding={4}
+            padding={0}
             style={styles.gridList}
           >
             {eventsByDay.map((dayEvents, idx) => {
@@ -44,8 +45,8 @@ const Days = props => {
 
 const mapState = state => {
   return {
-    eventsByDay: blockMapper(state.events, state.setting.numDays),
-    numDays: state.setting.numDays
+    eventsByDay: blockMapper(state.events, state.setting),
+    setting: state.setting
   }
 }
 
