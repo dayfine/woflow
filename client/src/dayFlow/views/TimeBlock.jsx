@@ -1,13 +1,12 @@
 import React from 'react'
-import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card'
-import FlatButton from 'material-ui/FlatButton'
+import {Card, CardHeader} from 'material-ui/Card'
 
-const TimeBlock = props => {
+const TimeBlock = ({ block }) => {
   return (
     <Card>
       <CardHeader
-        title='Without Avatar'
-        subtitle='Subtitle'
+        title={block.description}
+        subtitle={block.projectId}
         actAsExpander
         showExpandableButton
       />

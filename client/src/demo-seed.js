@@ -11,7 +11,7 @@ export const projects = mori.vector(
 const block1 = mori.hashMap(
   'id', 1,
   'description', 'Prepare presentation',
-  'duration', 1800,
+  'duration', 0.5,
   'priority', 2,
   'projectId', 2,
   'pinned', false,
@@ -21,7 +21,7 @@ const block1 = mori.hashMap(
 const block2 = mori.hashMap(
   'id', 2,
   'description', 'Prepare code example',
-  'duration', 10800,
+  'duration', 4,
   'priority', 3,
   'projectId', 1,
   'pinned', false,
@@ -31,7 +31,7 @@ const block2 = mori.hashMap(
 const block3 = mori.hashMap(
   'id', 3,
   'description', 'Pack a box of book',
-  'duration', 2700,
+  'duration', 0.75,
   'priority', 12,
   'projectId', 3,
   'pinned', false,
@@ -41,7 +41,7 @@ const block3 = mori.hashMap(
 const block4 = mori.hashMap(
   'id', 4,
   'description', 'Watch Intro to CS',
-  'duration', 3600,
+  'duration', 1,
   'priority', 4,
   'projectId', 4,
   'pinned', false,
@@ -51,7 +51,7 @@ const block4 = mori.hashMap(
 const block5 = mori.hashMap(
   'id', 5,
   'description', 'Capstone Research',
-  'duration', 11600,
+  'duration', 2.75,
   'priority', 1,
   'projectId', 1,
   'pinned', false,
@@ -61,7 +61,7 @@ const block5 = mori.hashMap(
 const block6 = mori.hashMap(
   'id', 6,
   'description', 'Career Prep',
-  'duration', 7500,
+  'duration', 2.5,
   'priority', 7,
   'projectId', null,
   'pinned', false,
@@ -71,7 +71,7 @@ const block6 = mori.hashMap(
 const block7 = mori.hashMap(
   'id', 15,
   'description', 'Appointment',
-  'duration', 3600,
+  'duration', 1,
   'priority', 10,
   'projectId', null,
   'pinned', true,
@@ -81,7 +81,7 @@ const block7 = mori.hashMap(
 const lunch = mori.hashMap(
   'id', 100,
   'description', 'Lunch Break',
-  'duration', 3600,
+  'duration', 1,
   'priority', -1,
   'projectId', null,
   'pinned', true,
@@ -94,12 +94,12 @@ const lunch = mori.hashMap(
 )
 
 export const blocks = mori.hashMap(
-  block1.id, block1,
-  block2.id, block2,
-  block3.id, block3,
-  block4.id, block4,
-  block5.id, block5,
-  block6.id, block6,
-  block7.id, block7,
-  lunch.id, lunch
+  mori.get(block1, 'id'), block1,
+  mori.get(block2, 'id'), block2,
+  mori.get(block3, 'id'), block3,
+  mori.get(block4, 'id'), block4,
+  mori.get(block5, 'id'), block5,
+  mori.get(block6, 'id'), block6,
+  mori.get(block7, 'id'), block7,
+  mori.get(lunch, 'id'), lunch
 )

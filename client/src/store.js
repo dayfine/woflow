@@ -28,7 +28,7 @@ const initialState = {
   events: blocks,
   setting: {
     daySpan: [ 8, 21 ],
-    numDays: 1,
+    numDays: 3,
     colors: {
       primary: '#03a9f4',
       pDark: '#007ac1',

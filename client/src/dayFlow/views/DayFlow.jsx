@@ -1,11 +1,12 @@
 import React from 'react'
 import TimeBlock from './TimeBlock'
 
-const DayFlow = props => {
+const DayFlow = ({ blocks }) => {
   return (
     <div className='dayflow'>
-      <TimeBlock />
-      <TimeBlock />
+      {blocks.map(block => {
+        return (<TimeBlock block={block} key={block.id} />)
+      })}
     </div>
   )
 }
