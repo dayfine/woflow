@@ -13,8 +13,8 @@ const RingTimer = props => {
         value={totalSeconds - timePassed}
         size={180}
         thickness={20}
-        innerStyle={{color: '#111'}}
-        style={{color: '#111'}}
+        innerStyle={{transform: 'rotate(270deg)'}}
+        color='#555'
       />
     </div>
   )
