@@ -1,12 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card'
-import TextField from 'material-ui/TextField'
-import Divider from 'material-ui/Divider'
 import Timer from './Timer'
 import RingTimer from './RingTimer'
 
-import './TimeCard.css'
+import Card, { CardHeader, CardContent } from 'material-ui/Card'
+import TextField from 'material-ui/TextField'
+import Divider from 'material-ui/Divider'
+import Typography from 'material-ui/Typography'
 
 const styles = {
   task: {
@@ -24,17 +24,19 @@ const TimeCard = props => {
   // const project = task.project.name
   return (
     <Card>
-      <CardHeader style={{height: 160, backgroundColor: '#eee'}}>
-        <TextField id='task' value='My Task' style={styles.task} />
-        <TextField id='project' value='My Project' style={styles.project} />
-      </CardHeader>
-      <CardText>
+      <CardContent>
+        <Typography type='display3' align='left'>
+          <TextField id='task' value='My Task' />
+        </Typography>
+        <Typography type='display1' align='left'>
+          <TextField id='project' value='My Project' />
+        </Typography>
         <Timer />
-      </CardText>
-      <Divider />
-      <i className='mui-icons pull-right'>launch</i>
-      <RingTimer />
-      <Divider />
+        <Divider />
+        <i className='mui-icons pull-right'>launch</i>
+        <RingTimer />
+        <Divider />
+      </CardContent>
     </Card>
 
   )

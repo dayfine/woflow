@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { GridList, GridTile } from 'material-ui/GridList'
 import './App.css'
 import { views as TimeCard } from './timeCard/'
 import { views as DayFlows } from './dayFlow/'
 
 import AppBar from 'material-ui/AppBar'
+import { GridList, GridListTile } from 'material-ui/GridList'
+import Icon from 'material-ui/Icon'
+import IconButton from 'material-ui/IconButton'
 
 // A class, potentially needs to initiate the store here when backend is hooked up
 class App extends Component {
@@ -13,18 +15,18 @@ class App extends Component {
     const colors = this.props.colors
     return (
       <div className='App'>
-        <AppBar
-          title='Welcome To Woflow!'
-          iconClassNameRight='muidocs-icon-navigation-expand-more'
-          style={{backgroundColor: colors.pDark}}
-        />
+        <AppBar position='static'>
+          <IconButton aria-label='Delete' disabled color='primary'>
+            <Icon>alarm</Icon>
+          </IconButton>
+        </AppBar>
         <GridList cols={12} cellHeight='auto'>
-          <GridTile cols={4}>
+          <GridListTile cols={4}>
             <TimeCard />
-          </GridTile>
-          <GridTile cols={8}>
+          </GridListTile>
+          <GridListTile cols={8}>
             <DayFlows numDays={5} />
-          </GridTile>
+          </GridListTile>
         </GridList>
       </div>
     )

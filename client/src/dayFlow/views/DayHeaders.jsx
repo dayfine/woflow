@@ -1,5 +1,5 @@
 import React from 'react'
-import { GridList, GridTile } from 'material-ui/GridList'
+import { GridList, GridListTile } from 'material-ui/GridList'
 
 const styles = {
   header: {
@@ -45,9 +45,9 @@ const DayHeaders = props => {
     <GridList cols={numDays} cellHeight={100} padding={0}>
       {daysArr.map((el, idx) => {
         return (
-          <GridTile cols={1} key={idx}>
+          <GridListTile cols={1} key={idx}>
             { renderDate(addDay(today, idx))}
-          </GridTile>
+          </GridListTile>
         )
       })}
     </GridList>

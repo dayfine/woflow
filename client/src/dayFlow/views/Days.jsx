@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { GridList, GridTile } from 'material-ui/GridList'
+import { GridList, GridListTile } from 'material-ui/GridList'
 import DayFlow from './DayFlow'
 import DayHeaders from './DayHeaders'
 import HourBar from './HourBar'
@@ -18,10 +18,10 @@ const Days = props => {
   return (
     <div className='days'>
       <GridList cols={12} cellHeight='auto'>
-        <GridTile cols={1}>
+        <GridListTile cols={1}>
           <HourBar daySpan={daySpan} />
-        </GridTile>
-        <GridTile cols={11}>
+        </GridListTile>
+        <GridListTile cols={11}>
           <DayHeaders numDays={numDays} />
           <GridList
             cols={numDays}
@@ -31,13 +31,13 @@ const Days = props => {
           >
             {eventsByDay.map((dayEvents, idx) => {
               return (
-                <GridTile cols={1} key={idx}>
+                <GridListTile cols={1} key={idx}>
                   <DayFlow blocks={dayEvents} />
-                </GridTile>
+                </GridListTile>
               )
             })}
           </GridList>
-        </GridTile>
+        </GridListTile>
       </GridList>
     </div>
   )

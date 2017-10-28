@@ -27,8 +27,6 @@ const TimeBlock = props => {
       <CardHeader
         title={block.description}
         subtitle={block.projectId}
-        actAsExpander
-        showExpandableButton
         />
     </Card>
   )

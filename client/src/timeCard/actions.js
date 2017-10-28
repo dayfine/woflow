@@ -8,7 +8,12 @@ const setStatus = status => ({ type: SET_STATUS, status })
 const updateTime = seconds => ({ type: UPDATE_TIME, seconds })
 const clearTimer = () => ({ type: CLEAR_TIMER })
 
-const tick = () => dispatch => dispatch(updateTime(1))
+const tick = () => (dispatch, getState) => {
+  const timer = getState().timeCard
+  timer.totalSeconds > timer.timePassed
+    ? dispatch(updateTime(1))
+    : dispatch(stopTimter())
+}
 
 export const startTimer = totalSeconds => dispatch => {
   // Pass in totalSeconds to start a new Timer

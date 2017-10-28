@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import CircularProgress from 'material-ui/CircularProgress'
+import { CircularProgress } from 'material-ui/Progress'
 
 const RingTimer = props => {
   const { timePassed, totalSeconds } = props.timeCard
@@ -14,10 +14,7 @@ const RingTimer = props => {
         min={0}
         value={totalSeconds - timePassed}
         size={300}
-        thickness={20}
-        innerStyle={{transform: 'rotate(270deg)'}}
-        style={{padding: '20px 0'}}
-        color={colors.secondary}
+        thickness={4}
       />
     </div>
   )

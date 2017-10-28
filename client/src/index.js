@@ -8,15 +8,12 @@ import { Provider } from 'react-redux'
 import store from './store'
 
 import registerServiceWorker from './registerServiceWorker'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 // const { persistor, store } = configureStore()
 
 ReactDOM.render(
   <Provider store={store}>
-    <MuiThemeProvider>
-      <App />
-    </MuiThemeProvider>
+    <App />
   </Provider>,
   document.getElementById('root')
 )

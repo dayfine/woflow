@@ -1,7 +1,0 @@
-.clock {
-  font-size: 60px
-}
-
-.react-countdown-clock canvas:last-of-type {
-  position: relative !important;
-}

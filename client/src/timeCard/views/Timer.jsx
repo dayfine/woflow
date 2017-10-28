@@ -1,9 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { formatSeconds } from '../util/helpers'
-import FlatButton from 'material-ui/FlatButton'
+import Button from 'material-ui/Button'
 import { startTimer, pauseTimter, stopTimter } from '../actions'
-import LinearProgress from 'material-ui/LinearProgress'
+import { LinearProgress } from 'material-ui/Progress'
 
 // Need a control for toggling status
 
@@ -22,9 +22,9 @@ const Timer = props => {
           return (<span key={idx} className='clock-text'>{chr}</span>)
         })}
       </div>
-      <FlatButton label='Start' onClick={onStart} />
-      <FlatButton label='Pause' onClick={onPause} />
-      <FlatButton label='End' onClick={onStop} />
+      <Button children='Start' onClick={onStart} />
+      <Button children='Pause' onClick={onPause} />
+      <Button children='End' onClick={onStop} />
       <LinearProgress
         mode='determinate'
         max={totalSeconds}
