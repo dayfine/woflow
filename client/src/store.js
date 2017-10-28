@@ -6,6 +6,7 @@ import { createLogger } from 'redux-logger'
 import { composeWithDevTools } from 'redux-devtools-extension'
 
 import {reducer as timeCardReducer} from './timeCard'
+import {reducer as dayFlowReducer} from './dayFlow'
 
 const config = {
   key: 'root', // key is required
@@ -13,14 +14,17 @@ const config = {
 }
 
 const rootReducer = combineReducers({
-  timeCard: timeCardReducer
+  timeCard: timeCardReducer,
+  events: dayFlowReducer
 })
 
 const reducer = persistReducer(config, rootReducer)
 
 const middlewares = [
   thunkMiddleware,
-  createLogger()
+  createLogger({
+    predicate: (getState, action) => action.type !== 'TIMER/UPDATE'
+  })
 ]
 
 const enhancers = composeWithDevTools(

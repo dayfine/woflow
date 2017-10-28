@@ -3,28 +3,33 @@ import { connect } from 'react-redux'
 import { formatSeconds } from '../util/helpers'
 import FlatButton from 'material-ui/FlatButton'
 import { startTimer, pauseTimter, stopTimter } from '../actions'
+import LinearProgress from 'material-ui/LinearProgress'
 
 // Need a control for toggling status
 
 const Timer = props => {
   const { onSubmit, onStart, onPause, onStop } = props
-  const { status, totalSeconds } = props.timeCard
+  const { status, timePassed, totalSeconds } = props.timeCard
   return (
     <div>
       <form onSubmit={onSubmit} className='countdown-form'>
         <input type='text' name='time' placeholder='Enter time in seconds' />
         <button className='button expanded'>Start</button>
       </form>
-
+      <div>status: {status}</div>
       <div className='clock'>
-        <div>status: {status}</div>
-        {formatSeconds(totalSeconds).split('').map((chr, idx) => {
+        {formatSeconds(totalSeconds - timePassed).split('').map((chr, idx) => {
           return (<span key={idx} className='clock-text'>{chr}</span>)
         })}
       </div>
       <FlatButton label='Start' onClick={onStart} />
       <FlatButton label='Pause' onClick={onPause} />
       <FlatButton label='End' onClick={onStop} />
+      <LinearProgress
+        mode='determinate'
+        max={totalSeconds}
+        value={totalSeconds - timePassed}
+      />
     </div>
 
   )
@@ -42,7 +47,7 @@ const mapDispatch = (dispatch, ownProps) => ({
     if (!strSeconds.match(/^[0-9]*$/)) return
 
     evt.target.time.value = ''
-    // ownProps.onSetCountdown(parseInt(strSeconds, 10))
+    dispatch(startTimer(parseInt(strSeconds, 10)))
   },
   onToggle (evt) {
 

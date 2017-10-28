@@ -1,8 +1,9 @@
-import { SET_TIME, SET_STATUS, UPDATE_TIME } from './actionTypes.js'
+import { SET_TIME, SET_STATUS, UPDATE_TIME, CLEAR_TIMER } from './actionTypes.js'
 import { STATUS } from './constants'
 
 const initialState = {
-  totalSeconds: 3599,
+  totalSeconds: 0,
+  timePassed: 0,
   status: STATUS.STOPPED
 }
 
@@ -15,7 +16,10 @@ export default (state = initialState, action) => {
       return { ...state, status: action.status }
 
     case UPDATE_TIME:
-      return { ...state, totalSeconds: state.totalSeconds + action.seconds }
+      return { ...state, timePassed: state.timePassed + action.seconds }
+
+    case CLEAR_TIMER:
+      return initialState
 
     default:
       return state

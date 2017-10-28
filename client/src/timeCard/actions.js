@@ -1,13 +1,14 @@
-import { SET_TIME, SET_STATUS, UPDATE_TIME } from './actionTypes.js'
+import { SET_TIME, SET_STATUS, UPDATE_TIME, CLEAR_TIMER } from './actionTypes.js'
 import { STATUS } from './constants'
 
 let timer = null
 
-export const setTime = totalSeconds => ({ type: SET_TIME, totalSeconds })
-export const setStatus = status => ({ type: SET_STATUS, status })
-export const updateTime = seconds => ({ type: UPDATE_TIME, seconds })
+const setTime = totalSeconds => ({ type: SET_TIME, totalSeconds })
+const setStatus = status => ({ type: SET_STATUS, status })
+const updateTime = seconds => ({ type: UPDATE_TIME, seconds })
+const clearTimer = () => ({ type: CLEAR_TIMER })
 
-const tick = () => dispatch => dispatch(updateTime(-1))
+const tick = () => dispatch => dispatch(updateTime(1))
 
 export const startTimer = totalSeconds => dispatch => {
   // Pass in totalSeconds to start a new Timer
@@ -25,6 +26,5 @@ export const pauseTimter = () => dispatch => {
 
 export const stopTimter = () => dispatch => {
   clearInterval(timer)
-  dispatch(setTime(0))
-  dispatch(setStatus(STATUS.STOPPED))
+  dispatch(clearTimer())
 }

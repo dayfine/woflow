@@ -2,7 +2,11 @@ import React from 'react'
 import { connect } from 'react-redux'
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card'
 import TextField from 'material-ui/TextField'
+import Divider from 'material-ui/Divider'
 import Timer from './Timer'
+import RingTimer from './RingTimer'
+
+import './TimeCard.css'
 
 const styles = {
   task: {
@@ -24,9 +28,15 @@ const TimeCard = props => {
         <TextField id='task' value='My Task' style={styles.task} />
         <TextField id='project' value='My Project' style={styles.project} />
       </CardHeader>
-      <Timer />
-      <CardText />
+      <CardText>
+        <Timer />
+      </CardText>
+      <Divider />
+      <i className='mui-icons pull-right'>launch</i>
+      <RingTimer />
+      <Divider />
     </Card>
+
   )
 }
 
