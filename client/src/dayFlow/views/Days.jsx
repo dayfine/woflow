@@ -1,26 +1,33 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import mori from 'mori'
 import { GridList, GridTile } from 'material-ui/GridList'
-import Paper from 'material-ui/Paper'
-import Divider from 'material-ui/Divider'
 import DayFlow from './DayFlow'
 import DayHeaders from './DayHeaders'
+import blockMapper from '../util/blockMapper'
+
+const styles = {
+  gridList: {
+    overflow: 'scroll'
+  }
+}
 
 const Days = props => {
-  const { numDays } = props
+  const { events, numDays } = props
   const daysArr = Array(...Array(numDays))
   return (
     <div className='days'>
-
-      <GridList cols={numDays} cellHeight='auto'>
+      <DayHeaders numDays={numDays} />
+      <GridList
+        cols={numDays}
+        cellHeight='auto'
+        padding={4}
+        style={styles.gridList}
+      >
         {daysArr.map((el, idx) => {
           return (
             <GridTile cols={1} key={idx}>
-              <Paper zDepth={1}>
-                { renderDate(addDay(today, idx))}
-                <Divider />
-                <DayFlow />
-              </Paper>
+              <DayFlow />
             </GridTile>
           )
         })}
@@ -31,7 +38,8 @@ const Days = props => {
 
 const mapState = state => {
   return {
-    events: state.events
+    events: state.events,
+    numDays: state.setting.numDays
   }
 }
 

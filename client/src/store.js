@@ -7,12 +7,14 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 
 import {reducer as timeCardReducer} from './timeCard'
 import {reducer as dayFlowReducer} from './dayFlow'
+import {reducer as settingReducer} from './userSetting'
 import { projects, blocks } from './demo-seed'
 
 const
   rootReducer = combineReducers({
     timeCard: timeCardReducer,
-    events: dayFlowReducer
+    events: dayFlowReducer,
+    setting: settingReducer
   })
   // persistConfig = { storage, key: 'root' },
   // reducer = persistReducer(persistConfig, rootReducer)
@@ -23,7 +25,19 @@ const initialState = {
     timePassed: 0,
     status: 'stopped'
   },
-  events: blocks
+  events: blocks,
+  setting: {
+    daySpan: [ 8, 21 ],
+    numDays: 1,
+    colors: {
+      primary: '#03a9f4',
+      pDark: '#007ac1',
+      pLight: '#67daff',
+      secondary: '#1de9b6'
+    },
+    timeZone: '',
+    timeFormat: ''
+  }
 }
 
 const
