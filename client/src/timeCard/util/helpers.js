@@ -16,7 +16,7 @@ export const makeTimeStr = numberString => {
 }
 
 export const parseTimeStr = numberString => {
-  console.log(numberString)
+  // console.log(numberString)
   const [ hours, minutes, seconds ] = makeTimeStr(numberString).split(':').map(str => parseInt(str))
   return hours * 3600 + minutes * 60 + seconds
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { parseSeconds } from '../util/helpers'
+import { makeTimeStr, parseSeconds } from '../util/helpers'
 import Button from 'material-ui/Button'
 import { startTimer, pauseTimter, stopTimter } from '../actions'
 import { LinearProgress } from 'material-ui/Progress'
@@ -15,8 +15,8 @@ const Timer = props => {
     <div>
       <CountDownInput />
       <div>status: {status}</div>
-      <div className='clock'>
-        {parseSeconds(totalSeconds - timePassed).split('').map((chr, idx) => {
+      <div className='clock' style={{fontSize: 56}}>
+        {makeTimeStr(parseSeconds(totalSeconds - timePassed)).split('').map((chr, idx) => {
           return (<span key={idx} className='clock-text'>{chr}</span>)
         })}
       </div>
@@ -37,19 +37,7 @@ const mapState = state => ({
   timer: state.timer
 })
 
-const mapDispatch = (dispatch, ownProps) => ({
-  onSubmit (evt) {
-    evt.preventDefault()
-    const strSeconds = evt.target.time.value
-
-    if (!strSeconds.match(/^[0-9]*$/)) return
-
-    evt.target.time.value = ''
-    dispatch(startTimer(parseInt(strSeconds, 10)))
-  },
-  onToggle (evt) {
-
-  },
+const mapDispatch = dispatch => ({
   onStart () { dispatch(startTimer()) },
   onPause () { dispatch(pauseTimter()) },
   onStop () { dispatch(stopTimter()) }

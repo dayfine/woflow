@@ -22,7 +22,7 @@ const TimeBlock = props => {
   return (
     <Card
       className={classes.block}
-      style={{height: block.duration * 100}}
+      style={{height: block.duration * 75}}
       >
       <CardHeader
         title={block.description}
