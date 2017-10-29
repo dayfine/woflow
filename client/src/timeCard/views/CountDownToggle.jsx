@@ -16,30 +16,28 @@ const styles = {
 
   },
   timer: {
-    position: 'absolute',
-    zIndex: 1,
-    top: '30vh',
-    left: '20vw',
-    fontSize: 160
+    // position: 'absolute',
+    // zIndex: 1,
+    // top: '30vh',
+    // left: '20vw',
+    // fontSize: 160
   }
 }
-
-// <Typography type='display4' align='center'>
-// </Typography>
 
 const CountDownToggle = props => {
   const { toggleTimer, stopTimer, classes } = props
   const { totalSeconds, timePassed } = props.timer
   return (
     <div className={classes.timer} >
+      <Typography type='display4' align='center'>
+        <div className='clock' onClick={toggleTimer}>
+          {parseSeconds(totalSeconds - timePassed).split('').map((chr, idx) => {
+            return (<span key={idx}>{chr}</span>)
+          })}
+        </div>
 
-      <div className='clock' onClick={toggleTimer}>
-        {parseSeconds(totalSeconds - timePassed).split('').map((chr, idx) => {
-          return (<span key={idx}>{chr}</span>)
-        })}
-      </div>
-
-      <Icon onClick={stopTimer}>clear</Icon>
+        <Icon onClick={stopTimer}>clear</Icon>
+      </Typography>
     </div>
   )
 }
