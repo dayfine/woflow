@@ -8,15 +8,11 @@ export const parseSeconds = totalSeconds => {
     minutes = timePad(Math.floor(totalSeconds / 60) % 60),
     hours = timePad(Math.floor(totalSeconds / 3600))
 
-  return `${hours}${minutes}${seconds}`
+  return `${hours}:${minutes}:${seconds}`
 }
 
-export const makeTimeStr = numberString => {
-  return numberString.match(/.{2}/g).join(':')
-}
-
-export const parseTimeStr = numberString => {
+export const parseTimeStr = timeString => {
   // console.log(numberString)
-  const [ hours, minutes, seconds ] = makeTimeStr(numberString).split(':').map(str => parseInt(str))
+  const [ hours, minutes, seconds ] = timeString.split(':').map(str => parseInt(str))
   return hours * 3600 + minutes * 60 + seconds
 }

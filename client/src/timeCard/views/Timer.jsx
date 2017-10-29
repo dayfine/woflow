@@ -1,28 +1,18 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { makeTimeStr, parseSeconds } from '../util/helpers'
-import Button from 'material-ui/Button'
-import { startTimer, pauseTimter, stopTimter } from '../actions'
-import { LinearProgress } from 'material-ui/Progress'
-import CountDownInput from './CountDownInput'
 
-// Need a control for toggling status
+import CountDownInput from './CountDownInput'
+import CountDownToggle from './CountDownToggle'
+import { LinearProgress } from 'material-ui/Progress'
 
 const Timer = props => {
-  const { onSubmit, onStart, onPause, onStop } = props
-  const { status, timePassed, totalSeconds } = props.timer
+  const { status, totalSeconds, timePassed } = props.timer
   return (
-    <div>
-      <CountDownInput />
-      <div>status: {status}</div>
-      <div className='clock' style={{fontSize: 56}}>
-        {makeTimeStr(parseSeconds(totalSeconds - timePassed)).split('').map((chr, idx) => {
-          return (<span key={idx} className='clock-text'>{chr}</span>)
-        })}
-      </div>
-      <Button children='Start' onClick={onStart} />
-      <Button children='Pause' onClick={onPause} />
-      <Button children='End' onClick={onStop} />
+    <div style={{height: 120}}>
+      {status === 'stopped'
+        ? (<CountDownInput />)
+        : (<CountDownToggle />)
+      }
       <LinearProgress
         mode='determinate'
         max={totalSeconds}
@@ -37,10 +27,4 @@ const mapState = state => ({
   timer: state.timer
 })
 
-const mapDispatch = dispatch => ({
-  onStart () { dispatch(startTimer()) },
-  onPause () { dispatch(pauseTimter()) },
-  onStop () { dispatch(stopTimter()) }
-})
-
-export default connect(mapState, mapDispatch)(Timer)
+export default connect(mapState)(Timer)

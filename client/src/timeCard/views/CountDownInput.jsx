@@ -3,13 +3,14 @@ import { connect } from 'react-redux'
 
 import { withStyles } from 'material-ui/styles'
 import MenuItem from 'material-ui/Menu/MenuItem'
+import Typography from 'material-ui/Typography'
 import Input from 'material-ui/Input'
 import Icon from 'material-ui/Icon'
-import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
+import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles'
 
-import { parseSeconds, makeTimeStr, parseTimeStr } from '../util/helpers'
+import { parseSeconds, parseTimeStr } from '../util/helpers'
 import { startTimer } from '../actions'
-import Typography from 'material-ui/Typography'
+
 
 const styles = {
 
@@ -17,8 +18,7 @@ const styles = {
 
 const theme = createMuiTheme({
   direction: 'rtl'
-});
-
+})
 
 
 class CountDownInput extends Component {
@@ -30,35 +30,41 @@ class CountDownInput extends Component {
   }
 
   handleChange = e => {
-    let str = e.target.value
-    if (str.length > 6) str = str.substr(str.length - 6)
-    this.setState({
-      time: str.padStart(6, '0')
-    })
+    const re = /^\d{2}:\d{2}:\d{1,3}$/
+    let time = e.target.value
+
+    if (!re.test(time)) return
+    time = time.replace(/:/g,'')
+    time = time.length > 6 ? time.substr(1) : time.padStart(6,'0')
+    time = time.match(/\d{2}/g).join(':')
+
+    this.setState({ time })
   }
 
   handleClear = () => {
-    this.setState({ time: ''})
+    this.setState({ time: '00:00:00'})
   }
 
   render () {
     const { time } = this.state
     const { startTimer } = this.props
     return (
-      <Typography type='display2' align='center'>
-        <MuiThemeProvider theme={theme}>
-          <div dir="rtl">
-            <Input
-              id="text-field-controlled"
-              value={time}
-              onChange={this.handleChange}
-            />
-            </div>
-          </MuiThemeProvider>
-        <span>{makeTimeStr(time)}</span>
+      <div>
+        <Typography type='display4' align='center'>
+          <MuiThemeProvider theme={theme}>
+            <div dir="rtl">
+              <Input
+                id="timeInput"
+                value={time}
+                autoFocus={true}
+                onChange={this.handleChange}
+              />
+              </div>
+            </MuiThemeProvider>
+        </Typography>
         <Icon onClick={startTimer.bind(null, parseTimeStr(time))}>play_arrow</Icon>
         <Icon onClick={this.handleClear}>refresh</Icon>
-      </Typography>
+      </div>
     )
   }
 }

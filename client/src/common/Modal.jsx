@@ -11,9 +11,13 @@ import Typography from 'material-ui/Typography'
 import Slide from 'material-ui/transitions/Slide'
 
 const styles = {
+  children: {
+    top: '100vh',
+    left: '100vw'
+  }
 }
 
-const FullScreenDialog = ({ open, onClose, children }) => {
+const FullScreenDialog = ({ open, onClose, children, classes }) => {
   return (
     <div>
       <Dialog
@@ -34,7 +38,9 @@ const FullScreenDialog = ({ open, onClose, children }) => {
             </Button>
           </Toolbar>
         </AppBar>
-        {children}
+        <div className={classes.children}>
+          {children}
+        </div>
       </Dialog>
     </div>
   )

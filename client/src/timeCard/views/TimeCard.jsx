@@ -44,7 +44,7 @@ class TimeCard extends Component {
         <Modal
           open={this.state.modalOpen}
           onClose={closeModal}
-          children={<RingTimer />}
+          children={<RingTimer         size={900}/>}
         />
         <Card>
           <CardContent className={classes.taskHeader}>
@@ -67,6 +67,7 @@ class TimeCard extends Component {
           </CardContent>
           <CardContent>
             <Timer />
+
             <Divider />
             <IconButton onClick={openModal}>
               <Icon>launch</Icon>

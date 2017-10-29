@@ -12,7 +12,7 @@ const tick = () => (dispatch, getState) => {
   const { timer } = getState()
   timer.totalSeconds > timer.timePassed
     ? dispatch(updateTime(1))
-    : dispatch(stopTimter())
+    : dispatch(stopTimer())
 }
 
 export const startTimer = totalSeconds => dispatch => {
@@ -23,12 +23,19 @@ export const startTimer = totalSeconds => dispatch => {
   dispatch(tick())
 }
 
-export const pauseTimter = () => dispatch => {
+export const pauseTimer = () => dispatch => {
   clearInterval(TIMER)
   dispatch(setStatus(STATUS.PAUSED))
 }
 
-export const stopTimter = () => dispatch => {
+export const stopTimer = () => dispatch => {
   clearInterval(TIMER)
   dispatch(clearTimer())
+}
+
+export const toggleTimer = () => (dispatch, getState) => {
+  const status = getState().timer.status
+
+  if (status === STATUS.STARTED) return dispatch(pauseTimer())
+  if (status === STATUS.PAUSED) return dispatch(startTimer())
 }
