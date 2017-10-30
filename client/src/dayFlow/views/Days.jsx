@@ -17,7 +17,7 @@ const Days = props => {
   const { numDays, daySpan } = props.setting
   return (
     <div className='days'>
-      <GridList cols={12} cellHeight='auto'>
+      <GridList cols={12} cellHeight='auto' spacing={0}>
         <GridListTile cols={1}>
           <HourBar daySpan={daySpan} />
         </GridListTile>
@@ -26,7 +26,7 @@ const Days = props => {
           <GridList
             cols={numDays}
             cellHeight='auto'
-            padding={0}
+            spacing={0}
             style={styles.gridList}
           >
             {eventsByDay.map((dayEvents, idx) => {

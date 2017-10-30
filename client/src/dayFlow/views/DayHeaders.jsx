@@ -42,7 +42,7 @@ const DayHeaders = props => {
   const { numDays } = props
   const daysArr = Array(...Array(numDays))
   return (
-    <GridList cols={numDays} cellHeight={100} padding={0}>
+    <GridList cols={numDays} cellHeight={100} spacing={0}>
       {daysArr.map((el, idx) => {
         return (
           <GridListTile cols={1} key={idx}>

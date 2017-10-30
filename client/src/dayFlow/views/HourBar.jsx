@@ -5,7 +5,8 @@ import { formatHour } from '../util/helpers'
 
 const styles = {
   hourBar: {
-    height: '100%'
+    height: '100%',
+    borderLeft: '1px solid #eee'
   },
   hourLabel: {
     height: 75,
@@ -20,7 +21,7 @@ const TimeCard = props => {
   const { classes, setting } = props
   const { daySpan } = setting
   const clocks = Array.from({length: daySpan[1] - daySpan[0]}, (v, i) => daySpan[0] + i)
-  console.log(clocks)
+
   return (
     <div className={classes.hourBar}>
       <div className={classes.filler} />

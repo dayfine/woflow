@@ -8,7 +8,7 @@ import { LinearProgress } from 'material-ui/Progress'
 const Timer = props => {
   const { status, totalSeconds, timePassed } = props.timer
   return (
-    <div style={{height: 120}}>
+    <div>
       {status === 'stopped'
         ? (<CountDownInput />)
         : (<CountDownToggle />)

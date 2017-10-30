@@ -15,7 +15,7 @@ import IconButton from 'material-ui/IconButton'
 
 const styles = {
   taskHeader: {
-    height: 120,
+    height: 110,
     backgroundColor: '#FE6B8B'
   }
 }

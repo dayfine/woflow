@@ -28,7 +28,6 @@ const RingTimer = props => {
         size={size || 300}
         thickness={4}
       />
-      <CountDownToggle className={classes.timer} />
     </div>
   )
 }

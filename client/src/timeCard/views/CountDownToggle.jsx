@@ -16,11 +16,10 @@ const styles = {
 
   },
   timer: {
-    // position: 'absolute',
-    // zIndex: 1,
-    // top: '30vh',
-    // left: '20vw',
-    // fontSize: 160
+    padding: '7px 0 9px',
+    letterSpacing: 0,
+    margin: 0,
+    lineHeight: '1em'
   }
 }
 
@@ -28,19 +27,22 @@ const CountDownToggle = props => {
   const { toggleTimer, stopTimer, classes } = props
   const { totalSeconds, timePassed } = props.timer
   return (
-    <div className={classes.timer} >
+    <div>
       <Typography type='display4' align='center'>
-        <div className='clock' onClick={toggleTimer}>
-          {parseSeconds(totalSeconds - timePassed).split('').map((chr, idx) => {
-            return (<span key={idx}>{chr}</span>)
-          })}
+        <div className={classes.timer} onClick={toggleTimer}>
+          {parseSeconds(totalSeconds - timePassed)}
         </div>
-
-        <Icon onClick={stopTimer}>clear</Icon>
       </Typography>
+      <Icon onClick={stopTimer}>clear</Icon>
     </div>
   )
 }
+
+// {parseSeconds(totalSeconds - timePassed).split('').map((chr, idx) => {
+//   return (<span key={idx}>{chr}</span>)
+// })}
+
+const styledComponent = withStyles(styles)(CountDownToggle)
 
 const mapState = state => ({
   timer: state.timer
@@ -48,4 +50,4 @@ const mapState = state => ({
 
 const mapDispatch = ({ toggleTimer, stopTimer })
 
-export default withStyles(styles)(connect(mapState, mapDispatch)(CountDownToggle))
+export default connect(mapState, mapDispatch)(styledComponent)

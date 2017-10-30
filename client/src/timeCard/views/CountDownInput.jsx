@@ -13,7 +13,9 @@ import { startTimer } from '../actions'
 
 
 const styles = {
-
+  timer: {
+    width: 270
+  }
 }
 
 const theme = createMuiTheme({
@@ -47,7 +49,7 @@ class CountDownInput extends Component {
 
   render () {
     const { time } = this.state
-    const { startTimer } = this.props
+    const { startTimer, classes } = this.props
     return (
       <div>
         <Typography type='display4' align='center'>
@@ -58,9 +60,10 @@ class CountDownInput extends Component {
                 value={time}
                 autoFocus={true}
                 onChange={this.handleChange}
+                className={classes.timer}
               />
-              </div>
-            </MuiThemeProvider>
+            </div>
+          </MuiThemeProvider>
         </Typography>
         <Icon onClick={startTimer.bind(null, parseTimeStr(time))}>play_arrow</Icon>
         <Icon onClick={this.handleClear}>refresh</Icon>
@@ -69,13 +72,15 @@ class CountDownInput extends Component {
   }
 }
 
+const styledComponent = withStyles(styles)(CountDownInput)
+
 const mapState = state => ({
   time: parseSeconds(state.timer.totalSeconds)
 })
 
 const mapDispatch = ({ startTimer })
 
-export default connect(mapState, mapDispatch)(CountDownInput)
+export default connect(mapState, mapDispatch)(styledComponent)
 
 
 

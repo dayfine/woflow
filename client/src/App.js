@@ -13,7 +13,7 @@ class App extends Component {
     return (
       <div className='App'>
         <NavBar />
-        <GridList cols={12} cellHeight='auto'>
+        <GridList cols={12} cellHeight='auto' spacing={0}>
           <GridListTile cols={4}>
             <TimeCard />
           </GridListTile>
