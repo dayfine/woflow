@@ -45,7 +45,7 @@ const Days = props => {
 
 const mapState = state => {
   return {
-    eventsByDay: blockMapper(state.events, state.setting),
+    eventsByDay: blockMapper(state.events, state.projects, state.setting),
     setting: state.setting
   }
 }

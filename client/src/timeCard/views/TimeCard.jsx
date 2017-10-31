@@ -1,24 +1,18 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import Timer from './Timer'
+
+import TaskHeader from './TaskHeader'
 import RingTimer from './RingTimer'
 import Modal from '../../common/Modal.jsx'
+import CountDownInput from './CountDownInput'
+import CountDownToggle from './CountDownToggle'
 
-import { withStyles } from 'material-ui/styles'
-import Card, { CardContent } from 'material-ui/Card'
-import TextField from 'material-ui/TextField'
-import MenuItem from 'material-ui/Menu/MenuItem'
+import Card, { CardContent, CardHeader } from 'material-ui/Card'
 import Divider from 'material-ui/Divider'
-import Typography from 'material-ui/Typography'
 import Icon from 'material-ui/Icon'
 import IconButton from 'material-ui/IconButton'
+import { LinearProgress } from 'material-ui/Progress'
 
-const styles = {
-  taskHeader: {
-    height: 110,
-    backgroundColor: '#FE6B8B'
-  }
-}
 
 class TimeCard extends Component {
   constructor () {
@@ -38,7 +32,7 @@ class TimeCard extends Component {
 
   render () {
     const { openModal, closeModal } = this
-    const { classes } = this.props
+    const { status, totalSeconds, timePassed } = this.props.timer
     return (
       <div>
         <Modal
@@ -47,33 +41,23 @@ class TimeCard extends Component {
           children={<RingTimer size={900}/>}
         />
         <Card>
-          <CardContent className={classes.taskHeader}>
-            <Typography type='display3' align='left'>
-              <TextField id='task' value='My Task' />
-            </Typography>
-            <Typography type='display1' align='left'>
-              <TextField
-                id='project'
-                select
-                value='My Project'
-                >
-                {[1, 2, 3].map(option => (
-                  <MenuItem key={option} value={option}>
-                    {option}
-                  </MenuItem>
-                  ))}
-              </TextField>
-            </Typography>
+          <TaskHeader />
+          <CardContent>
+            {status === 'stopped'
+              ? (<CountDownInput />)
+              : (<CountDownToggle />)
+            }
+            <LinearProgress
+              mode='determinate'
+              max={totalSeconds}
+              value={totalSeconds - timePassed}
+            />
           </CardContent>
           <CardContent>
-            <Timer />
-
-            <Divider />
             <IconButton onClick={openModal}>
               <Icon>launch</Icon>
             </IconButton>
             <RingTimer />
-            <Divider />
           </CardContent>
         </Card>
       </div>
@@ -81,23 +65,10 @@ class TimeCard extends Component {
   }
 }
 
-export default withStyles(styles)(connect(null, null)(TimeCard))
+const mapState = state => ({
+  timer: state.timer
+})
 
-  // <TextField
-  //   id='select-project'
-  //   select
-  //   label='Project'
-  //   value='Stackathon'
-  //   onChange={this.handleChange}
-  //   SelectProps={{
-  //     MenuProps: {
-  //     }
-  //   }}
-  //   margin='normal'
-  //     >
-  //   {[1, 2, 3].map(option => (
-  //     <MenuItem key={option.value} value={option.value}>
-  //       {option.label}
-  //     </MenuItem>
-  //       ))}
-  // </TextField>
+export default connect(mapState)(TimeCard)
+
+

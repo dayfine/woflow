@@ -1,9 +1,10 @@
 import mori from 'mori'
+import projectMapper from './projectMapper'
 
 const now = new Date()
 const start = now.getHours() + Math.floor(now.getMinutes() / 15) * 15
 
-export default (events, setting) => {
+export default (events, projects, setting) => {
   // Should first filter  recurring events v. nonrecurring events
   const { daySpan, numDays } = setting
 
@@ -12,7 +13,8 @@ export default (events, setting) => {
   const evtKeys = mori.intoArray(mori.keys(events))
 
   while (evtIdx < evtKeys.length && dayIdx < numDays) {
-    const event = mori.toJs(mori.get(events, evtKeys[evtIdx++]))
+    let event = mori.toJs(mori.get(events, evtKeys[evtIdx++]))
+    event = projectMapper(event, projects)
 
     if (todayRemaining - batchTotal > event.duration) {
       days[dayIdx].push(event)

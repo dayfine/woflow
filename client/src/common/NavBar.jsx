@@ -1,28 +1,42 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-
+import React from 'react'
 import { withStyles } from 'material-ui/styles'
 import AppBar from 'material-ui/AppBar'
+import Toolbar from 'material-ui/Toolbar'
+import Typography from 'material-ui/Typography'
+import Button from 'material-ui/Button'
 import Icon from 'material-ui/Icon'
 import IconButton from 'material-ui/IconButton'
 
-const style = {
+const style = theme => ({
+  root: {
+    width: '100%',
+    color: '#fff'
+  },
+  flex: {
+    flex: 1
+  },
+  menuButton: {
+    marginLeft: -12,
+    marginRight: 20
+  }
 
-}
+})
 
 const NavBar = props => {
-  const { colors } = props
+  const { classes } = props
   return (
-    <AppBar position='static' style={{backgroundColor: colors.primary}}>
-      <IconButton aria-label='Delete'>
-        <Icon>alarm</Icon>
-      </IconButton>
+    <AppBar position='fixed' className={classes.root}>
+      <Toolbar>
+        <IconButton className={classes.menuButton} color='inherit' aria-label='Menu'>
+          <Icon>menu</Icon>
+        </IconButton>
+        <Typography type='title' type='display1' color='inherit' className={classes.flex}>
+          Welcome to Woflow
+        </Typography>
+        <Button color='inherit'>Login</Button>
+      </Toolbar>
     </AppBar>
   )
 }
 
-const mapState = state => ({
-  colors: state.setting.colors
-})
-
-export default withStyles(style)(connect(mapState)(NavBar))
+export default withStyles(style)(NavBar)

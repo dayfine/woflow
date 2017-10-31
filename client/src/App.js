@@ -11,8 +11,9 @@ import { GridList, GridListTile } from 'material-ui/GridList'
 class App extends Component {
   render () {
     return (
-      <div className='App'>
+      <div className='App' style={{overflow: 'hidden'}}>
         <NavBar />
+        <div style={{width: '100vw', height: 64}} />
         <GridList cols={12} cellHeight='auto' spacing={0}>
           <GridListTile cols={4}>
             <TimeCard />
