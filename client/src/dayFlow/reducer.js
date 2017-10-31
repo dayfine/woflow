@@ -4,7 +4,7 @@ import mori from 'mori'
 export default (state = mori.hashMap(), action) => {
   switch (action.type) {
     case ADD_BLOCK:
-      return mori.assoc(state, action.block.id, action.block)
+      return mori.assoc(state, action.id, mori.toClj(action.block))
 
     case UPDATE_BLOCK:
       return state

@@ -6,6 +6,8 @@ import Icon from 'material-ui/Icon'
 import IconButton from 'material-ui/IconButton'
 import Slide from 'material-ui/transitions/Slide'
 
+import RingTimer from '../timeCard/views/RingTimer'
+
 const styles = {
   children: {
     top: '100vh',
@@ -26,9 +28,7 @@ const FullScreenDialog = ({ open, onClose, children, classes }) => {
           <Icon>clear</Icon>
         </IconButton>
 
-        <div className={classes.children}>
-          {children}
-        </div>
+        <RingTimer />
       </Dialog>
     </div>
   )

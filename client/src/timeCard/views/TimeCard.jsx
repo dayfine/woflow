@@ -20,7 +20,8 @@ const styles = {
     flip: false,
     position: 'absolute',
     top: 4,
-    right: 8
+    right: 8,
+    zIndex: 1000
   }
 }
 
@@ -49,7 +50,6 @@ class TimeCard extends Component {
         <Modal
           open={this.state.modalOpen}
           onClose={closeModal}
-          children={<RingTimer size={900}/>}
         />
         <Card>
           <TaskHeader />

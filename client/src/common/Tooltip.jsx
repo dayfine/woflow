@@ -1,10 +1,12 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 import { withStyles } from 'material-ui/styles'
 import Button from 'material-ui/Button'
 import Icon from 'material-ui/Icon'
-// import IconButton from 'material-ui/IconButton'
 import Tooltip from 'material-ui/Tooltip'
+
+import { setCurrTask } from './currentTaskReducer'
 
 const styles = theme => ({
   absolute: {
@@ -16,11 +18,15 @@ const styles = theme => ({
 })
 
 const Tooltips = props => {
-  const { classes } = props
+  const { classes, setCurrTask } = props
   return (
     <div>
       <Tooltip placement='bottom' title='Add new event'>
-        <Button fab color='accent' className={classes.absolute}>
+        <Button
+          fab color='accent'
+          className={classes.absolute}
+          onClick={setCurrTask.bind(this, -1)}
+          >
           <Icon children='add' />
         </Button>
       </Tooltip>
@@ -28,4 +34,8 @@ const Tooltips = props => {
   )
 }
 
-export default withStyles(styles)(Tooltips)
+const StyledComponent = withStyles(styles)(Tooltips)
+
+const mapDispatch = ({ setCurrTask })
+
+export default connect(null, mapDispatch)(StyledComponent)
