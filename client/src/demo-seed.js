@@ -10,7 +10,7 @@ export const projects = [
 
 const block1 = mori.hashMap(
   'id', 1,
-  'description', 'Prepare presentation',
+  'description', 'Presentation',
   'duration', 0.5,
   'priority', 2,
   'projectId', 2,
@@ -30,7 +30,7 @@ const block2 = mori.hashMap(
 
 const block3 = mori.hashMap(
   'id', 3,
-  'description', 'Pack a box of book',
+  'description', 'Pack a box of books',
   'duration', 0.75,
   'priority', 12,
   'projectId', 3,

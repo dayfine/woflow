@@ -1,22 +1,28 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { GridList, GridListTile } from 'material-ui/GridList'
+
 import DayFlow from './DayFlow'
 import DayHeaders from './DayHeaders'
 import HourBar from './HourBar'
 import blockMapper from '../util/blockMapper'
 
+import { withStyles } from 'material-ui/styles'
+import { GridList, GridListTile } from 'material-ui/GridList'
+
 const styles = {
   gridList: {
     overflowY: 'scroll'
+  },
+  days: {
+    paddingTop: 64
   }
 }
 
 const Days = props => {
-  const { eventsByDay } = props
+  const { eventsByDay, classes } = props
   const { numDays, daySpan } = props.setting
   return (
-    <div className='days'>
+    <div className={classes.days}>
       <GridList cols={12} cellHeight='auto' spacing={0}>
         <GridListTile cols={1}>
           <HourBar daySpan={daySpan} />
@@ -43,6 +49,8 @@ const Days = props => {
   )
 }
 
+const StyledComponent = withStyles(styles)(Days)
+
 const mapState = state => {
   return {
     eventsByDay: blockMapper(state.events, state.projects, state.setting),
@@ -50,4 +58,4 @@ const mapState = state => {
   }
 }
 
-export default connect(mapState)(Days)
+export default connect(mapState)(StyledComponent)

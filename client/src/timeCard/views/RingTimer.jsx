@@ -32,9 +32,11 @@ const RingTimer = props => {
   )
 }
 
+const StyledComponent = withStyles(styles)(RingTimer)
+
 const mapState = state => ({
   timer: state.timer,
   colors: state.setting.colors
 })
 
-export default withStyles(styles)(connect(mapState)(RingTimer))
+export default connect(mapState)(StyledComponent)

@@ -4,6 +4,7 @@ import './App.css'
 import { views as TimeCard } from './timeCard/'
 import { views as DayFlows } from './dayFlow/'
 import NavBar from './common/NavBar'
+import Tooltip from './common/Tooltip'
 
 import { GridList, GridListTile } from 'material-ui/GridList'
 
@@ -13,7 +14,6 @@ class App extends Component {
     return (
       <div className='App' style={{overflow: 'hidden'}}>
         <NavBar />
-        <div style={{width: '100vw', height: 64}} />
         <GridList cols={12} cellHeight='auto' spacing={0}>
           <GridListTile cols={4}>
             <TimeCard />
@@ -22,6 +22,7 @@ class App extends Component {
             <DayFlows numDays={5} />
           </GridListTile>
         </GridList>
+        <Tooltip />
       </div>
     )
   }

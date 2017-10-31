@@ -34,7 +34,7 @@ class TimeCard extends Component {
     const { openModal, closeModal } = this
     const { status, totalSeconds, timePassed } = this.props.timer
     return (
-      <div>
+      <div style={{paddingTop: 64}}>
         <Modal
           open={this.state.modalOpen}
           onClose={closeModal}

@@ -3,13 +3,19 @@ import React from 'react'
 import { withStyles } from 'material-ui/styles'
 import Card from 'material-ui/Card'
 import Typography from 'material-ui/Typography'
+import Icon from 'material-ui/Icon'
+import IconButton from 'material-ui/IconButton'
+import Grid from 'material-ui/Grid'
 
 const styles = {
   block: {
-    padding: 9
+    padding: 9,
+    position: 'relative'
   },
-  label: {
-    textTransform: 'capitalize'
+  edit: {
+    position: 'absolute',
+    top: 0,
+    right: 0
   }
 }
 
@@ -20,12 +26,24 @@ const TimeBlock = props => {
       className={classes.block}
       style={{height: block.duration * 100}}
       >
-      <Typography type='display1' align='left'>
-        {block.description}
-      </Typography>
-      <Typography type='title' align='left'>
-        {block.project && block.project.name}
-      </Typography>
+      <Grid container>
+        <Grid item xs={10}>
+          <Typography type='display1' align='left' style={{ color: '#03A9F4'}}>
+            {block.description}
+          </Typography>
+          <Typography type='title' align='left'>
+            {block.project && block.project.name}
+          </Typography>
+        </Grid>
+        <Grid item xs={2}>
+          <IconButton
+            className={classes.edit}
+            color='contrast'
+            aria-label='Edit'>
+            <Icon style={{ fontSize: 20 }}>mode_edit</Icon>
+          </IconButton>
+        </Grid>
+      </Grid>
     </Card>
   )
 }

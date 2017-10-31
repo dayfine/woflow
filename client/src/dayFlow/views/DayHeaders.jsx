@@ -7,6 +7,7 @@ const styles = {
     paddingLeft: 15,
     borderLeft: '1px solid #eee',
     borderBottom: '1px solid #eee'
+
   },
   day: {
     fontSize: 20,

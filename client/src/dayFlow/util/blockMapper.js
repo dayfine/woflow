@@ -9,19 +9,20 @@ export default (events, projects, setting) => {
   const { daySpan, numDays } = setting
 
   let days = [[]], batchTotal = 0, dayIdx = 0, evtIdx = 0
-  let todayRemaining = daySpan[1] - daySpan[0]
+  let DAY_LENGTH = daySpan[1] - daySpan[0]
   const evtKeys = mori.intoArray(mori.keys(events))
 
   while (evtIdx < evtKeys.length && dayIdx < numDays) {
     let event = mori.toJs(mori.get(events, evtKeys[evtIdx++]))
     event = projectMapper(event, projects)
 
-    if (todayRemaining - batchTotal > event.duration) {
+    if (DAY_LENGTH - batchTotal > event.duration) {
+      console.log(DAY_LENGTH, batchTotal, event.duration, event.description)
       days[dayIdx].push(event)
       batchTotal += event.duration
     } else {
       days.push([])
-      days[dayIdx++].push(event)
+      days[++dayIdx].push(event)
       batchTotal = event.duration
     }
   }
