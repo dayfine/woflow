@@ -9,6 +9,8 @@ import {reducer as timeCardReducer} from './timeCard'
 import {reducer as dayFlowReducer} from './dayFlow'
 import {reducer as projectReducer} from './projectMgmt'
 import {reducer as settingReducer} from './userSetting'
+import currentTaskReducer from './common/currentTaskReducer'
+
 import { projects, blocks } from './demo-seed'
 
 const
@@ -16,7 +18,8 @@ const
     timer: timeCardReducer,
     events: dayFlowReducer,
     projects: projectReducer,
-    setting: settingReducer
+    setting: settingReducer,
+    currentTaskId: currentTaskReducer
   })
   // persistConfig = { storage, key: 'root' },
   // reducer = persistReducer(persistConfig, rootReducer)
@@ -29,9 +32,7 @@ const initialState = {
   },
   projects: projects,
   events: blocks,
-  currentTask: {
-
-  },
+  currentTaskId: 1,
   setting: {
     daySpan: [ 10, 17 ],
     numDays: 3,

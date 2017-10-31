@@ -17,7 +17,6 @@ export default (events, projects, setting) => {
     event = projectMapper(event, projects)
 
     if (DAY_LENGTH - batchTotal > event.duration) {
-      console.log(DAY_LENGTH, batchTotal, event.duration, event.description)
       days[dayIdx].push(event)
       batchTotal += event.duration
     } else {

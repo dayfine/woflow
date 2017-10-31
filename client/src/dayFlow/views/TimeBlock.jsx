@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 import { withStyles } from 'material-ui/styles'
 import Card from 'material-ui/Card'
@@ -6,6 +7,8 @@ import Typography from 'material-ui/Typography'
 import Icon from 'material-ui/Icon'
 import IconButton from 'material-ui/IconButton'
 import Grid from 'material-ui/Grid'
+
+import { setCurrTask } from '../../common/currentTaskReducer'
 
 const styles = {
   block: {
@@ -21,7 +24,7 @@ const styles = {
 }
 
 const TimeBlock = props => {
-  const { classes, block } = props
+  const { block, classes, setCurrTask } = props
   return (
     <Card
       className={classes.block}
@@ -39,15 +42,15 @@ const TimeBlock = props => {
         <Grid item xs={2}>
           <IconButton
             className={classes.icon}
+            onClick={setCurrTask.bind(this, block.id)}
             color='contrast'
             aria-label='Start'>
             <Icon style={{ fontSize: 20 }}>play_arrow</Icon>
           </IconButton>
           <IconButton
             className={classes.icon}
-            color='contrast'
             aria-label='Edit'>
-            <Icon style={{ fontSize: 20 }}>mode_edit</Icon>
+            <Icon style={{ fontSize: 20, color: 'white' }}>mode_edit</Icon>
           </IconButton>
         </Grid>
       </Grid>
@@ -55,4 +58,8 @@ const TimeBlock = props => {
   )
 }
 
-export default withStyles(styles)(TimeBlock)
+const StyledComponent = withStyles(styles)(TimeBlock)
+
+const mapDispatch = ({ setCurrTask })
+
+export default connect(null, mapDispatch)(StyledComponent)
