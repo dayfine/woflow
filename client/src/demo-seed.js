@@ -1,12 +1,12 @@
 import mori from 'mori'
 
-export const projects = mori.vector(
-  'Capstone',
-  'Techtalk',
-  'Cleanup',
-  'Online Learning',
-  'Exercise'
-)
+export const projects = [
+  {id: 1, name: 'Capstone'},
+  {id: 2, name: 'Techtalk'},
+  {id: 3, name: 'Cleanup'},
+  {id: 4, name: 'Online Learning'},
+  {id: 5, name: 'Exercise'}
+]
 
 const block1 = mori.hashMap(
   'id', 1,
