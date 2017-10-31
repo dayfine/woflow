@@ -12,10 +12,11 @@ const styles = {
     padding: 9,
     position: 'relative'
   },
-  edit: {
-    position: 'absolute',
-    top: 0,
-    right: 0
+  icon: {
+    height: 'auto',
+    width: 'auto',
+    padding: 0,
+    margin: 0
   }
 }
 
@@ -37,7 +38,13 @@ const TimeBlock = props => {
         </Grid>
         <Grid item xs={2}>
           <IconButton
-            className={classes.edit}
+            className={classes.icon}
+            color='contrast'
+            aria-label='Start'>
+            <Icon style={{ fontSize: 20 }}>play_arrow</Icon>
+          </IconButton>
+          <IconButton
+            className={classes.icon}
             color='contrast'
             aria-label='Edit'>
             <Icon style={{ fontSize: 20 }}>mode_edit</Icon>

@@ -7,12 +7,22 @@ import Modal from '../../common/Modal.jsx'
 import CountDownInput from './CountDownInput'
 import CountDownToggle from './CountDownToggle'
 
+import { withStyles } from 'material-ui/styles'
 import Card, { CardContent, CardHeader } from 'material-ui/Card'
 import Divider from 'material-ui/Divider'
 import Icon from 'material-ui/Icon'
 import IconButton from 'material-ui/IconButton'
 import { LinearProgress } from 'material-ui/Progress'
 
+const styles = {
+  relative: {position: 'relative'},
+  absolute: {
+    flip: false,
+    position: 'absolute',
+    top: 4,
+    right: 8
+  }
+}
 
 class TimeCard extends Component {
   constructor () {
@@ -32,6 +42,7 @@ class TimeCard extends Component {
 
   render () {
     const { openModal, closeModal } = this
+    const { classes } = this.props
     const { status, totalSeconds, timePassed } = this.props.timer
     return (
       <div style={{paddingTop: 64}}>
@@ -54,9 +65,11 @@ class TimeCard extends Component {
             />
           </CardContent>
           <CardContent>
-            <IconButton onClick={openModal}>
-              <Icon>launch</Icon>
-            </IconButton>
+            <div className={classes.relative}>
+              <IconButton onClick={openModal} className={classes.absolute}>
+                <Icon>launch</Icon>
+              </IconButton>
+            </div>
             <RingTimer />
           </CardContent>
         </Card>
@@ -65,10 +78,12 @@ class TimeCard extends Component {
   }
 }
 
+const StyledComponent = withStyles(styles)(TimeCard)
+
 const mapState = state => ({
   timer: state.timer
 })
 
-export default connect(mapState)(TimeCard)
+export default connect(mapState)(StyledComponent)
 
 

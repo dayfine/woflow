@@ -1,10 +1,13 @@
-import { ADD_BLOCK, MOVE_BLOCK, DELETE_BLOCK, TOGGLE_BLOCK } from './actionTypes.js'
+import { ADD_BLOCK, UPDATE_BLOCK, MOVE_BLOCK, DELETE_BLOCK, TOGGLE_BLOCK } from './actionTypes.js'
 import mori from 'mori'
 
 export default (state = mori.hashMap(), action) => {
   switch (action.type) {
     case ADD_BLOCK:
       return mori.assoc(state, action.block.id, action.block)
+
+    case UPDATE_BLOCK:
+      return state
 
     case MOVE_BLOCK:
       return state

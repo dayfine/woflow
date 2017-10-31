@@ -29,6 +29,9 @@ const initialState = {
   },
   projects: projects,
   events: blocks,
+  currentTask: {
+
+  },
   setting: {
     daySpan: [ 10, 17 ],
     numDays: 3,

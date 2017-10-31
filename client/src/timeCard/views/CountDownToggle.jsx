@@ -38,10 +38,6 @@ const CountDownToggle = props => {
   )
 }
 
-// {parseSeconds(totalSeconds - timePassed).split('').map((chr, idx) => {
-//   return (<span key={idx}>{chr}</span>)
-// })}
-
 const styledComponent = withStyles(styles)(CountDownToggle)
 
 const mapState = state => ({
