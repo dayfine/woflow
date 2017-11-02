@@ -11,7 +11,6 @@ export default (events, projects, setting) => {
   let days = [[]], batchTotal = 0, dayIdx = 0, evtIdx = 0
   let DAY_LENGTH = daySpan[1] - daySpan[0]
   const evtKeys = mori.intoArray(mori.keys(events)).sort((a, b) => a - b)
-  console.log(evtKeys)
 
   while (evtIdx < evtKeys.length && dayIdx < numDays) {
     let event = mori.toJs(mori.get(events, evtKeys[evtIdx++]))

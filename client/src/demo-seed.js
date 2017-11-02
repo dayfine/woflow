@@ -31,7 +31,7 @@ const block2 = mori.hashMap(
 const block3 = mori.hashMap(
   'id', 3,
   'description', 'Pack a box of books',
-  'duration', 0.75,
+  'duration', 1.75,
   'priority', 12,
   'projectId', 3,
   'pinned', false,
@@ -51,7 +51,7 @@ const block4 = mori.hashMap(
 const block5 = mori.hashMap(
   'id', 5,
   'description', 'Capstone Research',
-  'duration', 2.75,
+  'duration', 1.75,
   'priority', 1,
   'projectId', 1,
   'pinned', false,
@@ -71,7 +71,7 @@ const block6 = mori.hashMap(
 const block7 = mori.hashMap(
   'id', 15,
   'description', 'Appointment',
-  'duration', 1,
+  'duration', 2.5,
   'priority', 10,
   'projectId', null,
   'pinned', true,
@@ -80,8 +80,8 @@ const block7 = mori.hashMap(
 
 const lunch = mori.hashMap(
   'id', 100,
-  'description', 'Lunch Break',
-  'duration', 1,
+  'description', 'Break',
+  'duration', 2,
   'priority', -1,
   'projectId', null,
   'pinned', true,

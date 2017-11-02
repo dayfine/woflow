@@ -1,4 +1,4 @@
-import { ADD_BLOCK, UPDATE_BLOCK, MOVE_BLOCK, DELETE_BLOCK, TOGGLE_BLOCK } from './actionTypes.js'
+import { ADD_BLOCK, UPDATE_BLOCK, MOVE_BLOCK, DELETE_BLOCK } from './actionTypes.js'
 import mori from 'mori'
 
 export default (state = mori.hashMap(), action) => {
@@ -7,16 +7,15 @@ export default (state = mori.hashMap(), action) => {
       return mori.assoc(state, action.id, mori.toClj(action.block))
 
     case UPDATE_BLOCK:
-      return state
+      const { block } = action
+      const newBlock = mori.merge(mori.get(state, block.id), mori.toClj(block))
+      return mori.assoc(state, block.id, newBlock)
 
     case MOVE_BLOCK:
       return state
 
     case DELETE_BLOCK:
       return mori.dissoc(state, action.id)
-
-    case TOGGLE_BLOCK:
-      return mori.updateIn(state, [action.id], () => {})
 
     default:
       return state

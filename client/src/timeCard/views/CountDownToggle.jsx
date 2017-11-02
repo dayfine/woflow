@@ -10,10 +10,10 @@ import { parseSeconds } from '../util/helpers'
 
 const styles = {
   started: {
-
+    zIndex: 8000
   },
   stopped: {
-
+    zIndex: 8000
   },
   timer: {
     padding: '7px 0 9px',
@@ -25,9 +25,9 @@ const styles = {
 
 const CountDownToggle = props => {
   const { toggleTimer, stopTimer, classes } = props
-  const { totalSeconds, timePassed } = props.timer
+  const { status, totalSeconds, timePassed } = props.timer
   return (
-    <div>
+    <div className={status === 'started' ? classes.started : classes.stopped}>
       <Typography type='display4' align='center'>
         <div className={classes.timer} onClick={toggleTimer}>
           {parseSeconds(totalSeconds - timePassed)}

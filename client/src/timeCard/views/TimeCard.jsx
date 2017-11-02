@@ -61,16 +61,11 @@ class TimeCard extends Component {
             <LinearProgress
               mode='determinate'
               max={totalSeconds}
+              min={0}
               value={totalSeconds - timePassed}
             />
-          </CardContent>
-          <CardContent>
-            <div className={classes.relative}>
-              <IconButton onClick={openModal} className={classes.absolute}>
-                <Icon>launch</Icon>
-              </IconButton>
-            </div>
-            <RingTimer />
+
+          <RingTimer />
           </CardContent>
         </Card>
       </div>
@@ -86,4 +81,10 @@ const mapState = state => ({
 
 export default connect(mapState)(StyledComponent)
 
+
+//  <div className={classes.relative}>
+//    <IconButton onClick={openModal} >
+//      <Icon>launch</Icon>
+//    </IconButton>
+//  </div>
 

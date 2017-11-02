@@ -19,7 +19,7 @@ const RingTimer = props => {
   const { timePassed, totalSeconds } = props.timer
   // some style so to be used for modal/fullscreen
   return (
-    <div style={{height: size * 1.2 || 340, padding: 'auto'}}>
+    <div style={{height: size * 1.1 || 320, padding: 'auto'}}>
       <CircularProgress
         mode='determinate'
         max={totalSeconds}
