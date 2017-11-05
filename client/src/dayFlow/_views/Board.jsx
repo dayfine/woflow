@@ -1,30 +1,29 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Knight from './Knight'
-import Square from './Square'
-import { moveKnight } from '../_reducer'
+import BoardSquare from './BoardSquare'
+import { DragDropContext } from 'react-dnd'
+import HTML5Backend from 'react-dnd-html5-backend'
 
 class Board extends Component {
   renderSquare (i) {
-    const { knightPosition, moveKnight } = this.props
     const x = i % 8
     const y = Math.floor(i / 8)
-    const black = (x + y) % 2 === 1
-
-    const [knightX, knightY] = knightPosition
-    const Piece = (x === knightX && y === knightY)
-      ? <Knight />
-      : null
 
     return (
-      <div key={i}
-        style={{ width: '12.5%', height: '12.5%', minHeight: 50 }}
-        onClick={moveKnight.bind(this, x, y)}>
-        <Square black={black}>
-          {Piece}
-        </Square>
+      <div key={i} style={{ width: '12.5%', height: '12.5%', minHeight: 50 }}>
+        <BoardSquare x={x} y={y}>
+          {this.renderPiece(x, y)}
+        </BoardSquare>
       </div>
     )
+  }
+
+  renderPiece (x, y) {
+    const [knightX, knightY] = this.props.knightPosition
+    if (x === knightX && y === knightY) {
+      return <Knight />
+    }
   }
 
   render () {
@@ -50,6 +49,6 @@ const mapState = state => ({
   knightPosition: state.knightPosition
 })
 
-const mapDispatch = ({ moveKnight })
+const DragContext = DragDropContext(HTML5Backend)(Board)
 
-export default connect(mapState, mapDispatch)(Board)
+export default connect(mapState)(DragContext)

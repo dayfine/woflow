@@ -1,5 +1,5 @@
 import { SET_TIME, SET_STATUS, UPDATE_TIME, CLEAR_TIMER } from './actionTypes.js'
-import { STATUS } from './constants'
+import { TIMER_STATUS as STATUS } from '../constants'
 
 let TIMER = null
 

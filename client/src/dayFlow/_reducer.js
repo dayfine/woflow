@@ -4,6 +4,7 @@ const MOVE_KNIGHT = 'MOVE_KNIGHT'
 export const moveKnight = (toX, toY) => ({ type: MOVE_KNIGHT, newPosition: [toX, toY] })
 
 export function canMoveKnight (newPosition, knightPosition) {
+  console.log(newPosition)
   const [x, y] = knightPosition
   const [toX, toY] = newPosition
   const dx = toX - x
