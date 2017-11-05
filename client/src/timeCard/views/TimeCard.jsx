@@ -45,6 +45,7 @@ class TimeCard extends Component {
     const { openModal, closeModal } = this
     const { classes } = this.props
     const { status, totalSeconds, timePassed } = this.props.timer
+
     return (
       <div style={{paddingTop: 64}}>
         <Modal
@@ -54,20 +55,23 @@ class TimeCard extends Component {
         <Card>
           <TaskHeader />
           <CardContent>
-            {status === 'stopped'
+          {status === 'stopped'
               ? (<CountDownInput />)
               : (<CountDownToggle />)
             }
             <LinearProgress
               mode='determinate'
-              max={totalSeconds}
-              min={0}
-              value={totalSeconds - timePassed}
+              value={100 * (1- timePassed/totalSeconds)}
             />
-
-          <RingTimer />
+            <div className={classes.relative}>
+              <IconButton onClick={openModal} >
+                <Icon>launch</Icon>
+              </IconButton>
+            </div>
+            <RingTimer />
           </CardContent>
         </Card>
+
       </div>
     )
   }
@@ -82,9 +86,4 @@ const mapState = state => ({
 export default connect(mapState)(StyledComponent)
 
 
-//  <div className={classes.relative}>
-//    <IconButton onClick={openModal} >
-//      <Icon>launch</Icon>
-//    </IconButton>
-//  </div>
 

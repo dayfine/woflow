@@ -9,17 +9,17 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case SET_TIME:
-      return { ...state, totalSeconds: action.totalSeconds }
+  //   case SET_TIME:
+  //     return { ...state, totalSeconds: action.totalSeconds }
 
-    case SET_STATUS:
-      return { ...state, status: action.status }
+  //   case SET_STATUS:
+  //     return { ...state, status: action.status }
 
-    case UPDATE_TIME:
-      return { ...state, timePassed: state.timePassed + action.seconds }
+  //   case UPDATE_TIME:
+  //     return { ...state, timePassed: state.timePassed + action.seconds }
 
-    case CLEAR_TIMER:
-      return initialState
+  //   case CLEAR_TIMER:
+  //     return initialState
 
     default:
       return state
