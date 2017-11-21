@@ -10,7 +10,7 @@ const
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'))
 } else {
-  require('../secrets')
+  // require('../secrets')
 }
 
 app.use(bodyParser.urlencoded({ extended: false }))

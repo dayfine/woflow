@@ -10,6 +10,9 @@ import Grid from 'material-ui/Grid'
 
 import { setCurrTask } from '../../common/currentTaskReducer'
 
+import { DragSource, DropTarget } from 'react-dnd'
+import ItemTypes from '../../ItemTypes'
+
 const styles = {
   block: {
     padding: 9,
@@ -23,9 +26,46 @@ const styles = {
   }
 }
 
+const cardSource = {
+  beginDrag(props) {
+    return {
+      id: props.id,
+      index: props.index,
+    }
+  },
+}
+
+const collectSource = (connect, monitor) => ({
+  connectDragSource: connect.dragSource(),
+  isDragging: monitor.isDragging()
+})
+
+const cardTarget = {
+  hover(props, monitor, component) {
+    const dragIndex = monitor.getItem().index
+    const hoverIndex = props.index
+
+    // Don't replace items with themselves
+    if (dragIndex === hoverIndex) {
+      return
+    }
+  }
+}
+
+const collectTarget = (connect, monitor) => ({
+  connectDropTarget: connect.dropTarget(),
+  isOver: monitor.isOver()
+})
+
 const TimeBlock = props => {
+    const {
+      isDragging,
+      connectDragSource,
+      connectDropTarget,
+    } = props
   const { block, classes, setCurrTask } = props
-  return (
+  return connectDragSource(
+    connectDropTarget(<div>
     <Card
       className={classes.block}
       style={{height: block.duration * 100}}
@@ -55,11 +95,15 @@ const TimeBlock = props => {
         </Grid>
       </Grid>
     </Card>
-  )
+  </div>
+  ))
 }
-
-const StyledComponent = withStyles(styles)(TimeBlock)
 
 const mapDispatch = ({ setCurrTask })
 
-export default connect(null, mapDispatch)(StyledComponent)
+export default  connect(null, mapDispatch)(
+                withStyles(styles)(
+                DragSource(ItemTypes.CARD, cardSource, collectSource)(
+                DropTarget(ItemTypes.CARD, cardTarget, collectTarget)(
+                  TimeBlock
+                ))))

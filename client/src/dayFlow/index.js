@@ -1,5 +1,5 @@
 import * as actions from './actions'
-import reducer from './_reducer'
-import views from './_views/Board'
+import reducer from './reducer'
+import views from './views/Days'
 
 export { actions, reducer, views }

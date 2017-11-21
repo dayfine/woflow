@@ -16,8 +16,7 @@ import { projects, blocks } from './demo-seed'
 const
   rootReducer = combineReducers({
     timer: timeCardReducer,
-    // events: dayFlowReducer,
-    knightPosition: dayFlowReducer,
+    events: dayFlowReducer,
     projects: projectReducer,
     setting: settingReducer,
     currentTaskId: currentTaskReducer
@@ -32,7 +31,7 @@ const initialState = {
     status: 'stopped'
   },
   projects: projects,
-  // events: blocks,
+  events: blocks,
   currentTaskId: 1,
   setting: {
     daySpan: [ 10, 17 ],
