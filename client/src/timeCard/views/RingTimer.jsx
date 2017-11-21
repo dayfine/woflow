@@ -17,6 +17,7 @@ const styles = {
 const RingTimer = props => {
   const { colors, size, classes } = props
   const { timePassed, totalSeconds } = props.timer
+
   // some style so to be used for modal/fullscreen
   return (
     <div style={{height: size * 1.1 || 320, padding: 'auto'}}>

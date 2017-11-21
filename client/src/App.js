@@ -19,7 +19,7 @@ class App extends Component {
             <TimeCard />
           </GridListTile>
           <GridListTile cols={8}>
-            <DayFlows numDays={5} />
+            <DayFlows />
           </GridListTile>
         </GridList>
         <Tooltip />
