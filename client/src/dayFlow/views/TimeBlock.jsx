@@ -47,12 +47,11 @@ const cardTarget = {
     const dragId = monitor.getItem().id
     const dragIndex = monitor.getItem().priority
     const dropIndex = props.block.priority
-    console.log(dragIndex, dropIndex)
 
     if (dragIndex === dropIndex) return
-
-    props.moveBlock(dragId, dropIndex - 1)
-    // monitor.getItem().index = hoverIndex
+    dragIndex > dropIndex
+      ? props.moveBlock(dragId, dropIndex - 1)
+      : props.moveBlock(dragId, dropIndex + 1)
   }
 }
 
