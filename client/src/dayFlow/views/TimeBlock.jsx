@@ -9,6 +9,7 @@ import IconButton from 'material-ui/IconButton'
 import Grid from 'material-ui/Grid'
 
 import { setCurrTask } from '../../common/currentTaskReducer'
+import { moveBlock } from '../actions'
 
 import { DragSource, DropTarget } from 'react-dnd'
 import ItemTypes from '../../ItemTypes'
@@ -27,12 +28,13 @@ const styles = {
 }
 
 const cardSource = {
-  beginDrag(props) {
+  beginDrag (props) {
+    console.log('cardprop', props)
     return {
-      id: props.id,
-      index: props.index,
+      id: props.block.id,
+      priority: props.block.priority,
     }
-  },
+  }
 }
 
 const collectSource = (connect, monitor) => ({
@@ -41,14 +43,16 @@ const collectSource = (connect, monitor) => ({
 })
 
 const cardTarget = {
-  hover(props, monitor, component) {
-    const dragIndex = monitor.getItem().index
-    const hoverIndex = props.index
+  drop (props, monitor, component) {
+    const dragId = monitor.getItem().id
+    const dragIndex = monitor.getItem().priority
+    const dropIndex = props.block.priority
+    console.log(dragIndex, dropIndex)
 
-    // Don't replace items with themselves
-    if (dragIndex === hoverIndex) {
-      return
-    }
+    if (dragIndex === dropIndex) return
+
+    props.moveBlock(dragId, dropIndex - 1)
+    // monitor.getItem().index = hoverIndex
   }
 }
 
@@ -58,11 +62,7 @@ const collectTarget = (connect, monitor) => ({
 })
 
 const TimeBlock = props => {
-    const {
-      isDragging,
-      connectDragSource,
-      connectDropTarget,
-    } = props
+  const { isDragging, connectDragSource, connectDropTarget, } = props
   const { block, classes, setCurrTask } = props
   return connectDragSource(
     connectDropTarget(<div>
@@ -99,7 +99,7 @@ const TimeBlock = props => {
   ))
 }
 
-const mapDispatch = ({ setCurrTask })
+const mapDispatch = ({ setCurrTask, moveBlock })
 
 export default  connect(null, mapDispatch)(
                 withStyles(styles)(

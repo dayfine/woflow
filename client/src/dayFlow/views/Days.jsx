@@ -59,8 +59,8 @@ const mapState = state => {
   }
 }
 
-export default  connect(mapState)(
+export default  DragDropContext(HTML5Backend)(
+                connect(mapState)(
                 withStyles(styles)(
-                DragDropContext(HTML5Backend)(
                   Days
                 )))

@@ -12,7 +12,9 @@ export default (state = mori.hashMap(), action) => {
       return mori.assoc(state, block.id, newBlock)
 
     case MOVE_BLOCK:
-      return state
+      const { id, newPriority } = action
+      const movedBlock = mori.assoc(mori.get(state, id), 'priority', newPriority)
+      return mori.assoc(state, id, movedBlock)
 
     case DELETE_BLOCK:
       return mori.dissoc(state, action.id)
