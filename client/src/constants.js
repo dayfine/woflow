@@ -4,6 +4,6 @@ export const TIMER_STATUS = {
   PAUSED: 'paused'
 }
 
-export const ItemTypes = {
-  KNIGHT: 'knight'
+export const DragItemTypes = {
+  CARD: 'card'
 }

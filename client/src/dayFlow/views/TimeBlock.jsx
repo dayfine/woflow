@@ -12,7 +12,7 @@ import { setCurrTask } from '../../common/currentTaskReducer'
 import { moveBlock } from '../actions'
 
 import { DragSource, DropTarget } from 'react-dnd'
-import ItemTypes from '../../ItemTypes'
+import { DragItemTypes as ItemTypes } from '../../constants'
 
 const styles = {
   block: {
@@ -32,7 +32,7 @@ const cardSource = {
     console.log('cardprop', props)
     return {
       id: props.block.id,
-      priority: props.block.priority,
+      priority: props.block.priority
     }
   }
 }
@@ -61,46 +61,46 @@ const collectTarget = (connect, monitor) => ({
 })
 
 const TimeBlock = props => {
-  const { isDragging, connectDragSource, connectDropTarget, } = props
+  const { isDragging, connectDragSource, connectDropTarget } = props
   const { block, classes, setCurrTask } = props
   return connectDragSource(
     connectDropTarget(<div>
-    <Card
-      className={classes.block}
-      style={{height: block.duration * 100}}
+      <Card
+        className={classes.block}
+        style={{height: block.duration * 100}}
       >
-      <Grid container>
-        <Grid item xs={10}>
-          <Typography type='display1' align='left' style={{ color: '#03A9F4'}}>
-            {block.description}
-          </Typography>
-          <Typography type='title' align='left'>
-            {block.project && block.project.name}
-          </Typography>
+        <Grid container>
+          <Grid item xs={10}>
+            <Typography type='display1' align='left' style={{ color: '#03A9F4'}}>
+              {block.description}
+            </Typography>
+            <Typography type='title' align='left'>
+              {block.project && block.project.name}
+            </Typography>
+          </Grid>
+          <Grid item xs={2}>
+            <IconButton
+              className={classes.icon}
+              onClick={setCurrTask.bind(this, block.id)}
+              color='contrast'
+              aria-label='Start'>
+              <Icon style={{ fontSize: 20 }}>play_arrow</Icon>
+            </IconButton>
+            <IconButton
+              className={classes.icon}
+              aria-label='Edit'>
+              <Icon style={{ fontSize: 20, color: 'white' }}>mode_edit</Icon>
+            </IconButton>
+          </Grid>
         </Grid>
-        <Grid item xs={2}>
-          <IconButton
-            className={classes.icon}
-            onClick={setCurrTask.bind(this, block.id)}
-            color='contrast'
-            aria-label='Start'>
-            <Icon style={{ fontSize: 20 }}>play_arrow</Icon>
-          </IconButton>
-          <IconButton
-            className={classes.icon}
-            aria-label='Edit'>
-            <Icon style={{ fontSize: 20, color: 'white' }}>mode_edit</Icon>
-          </IconButton>
-        </Grid>
-      </Grid>
-    </Card>
-  </div>
+      </Card>
+    </div>
   ))
 }
 
 const mapDispatch = ({ setCurrTask, moveBlock })
 
-export default  connect(null, mapDispatch)(
+export default connect(null, mapDispatch)(
                 withStyles(styles)(
                 DragSource(ItemTypes.CARD, cardSource, collectSource)(
                 DropTarget(ItemTypes.CARD, cardTarget, collectTarget)(
