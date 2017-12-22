@@ -1,1 +1,0 @@
-{"dependencies":[],"generated":{"js":"\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nvar TIMER_STATUS = exports.TIMER_STATUS = {\n  STOPPED: 'stopped',\n  STARTED: 'started',\n  PAUSED: 'paused'\n};\n\nvar DragItemTypes = exports.DragItemTypes = {\n  CARD: 'card'\n};"},"hash":"bdea4faeba0e42913f064427887b1306"}

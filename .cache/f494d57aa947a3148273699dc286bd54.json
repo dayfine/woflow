@@ -1,1 +1,0 @@
-{"dependencies":[],"generated":{"js":"\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n\tvalue: true\n});\nexports.default = getNextUniqueId;\nvar nextUniqueId = 0;\n\nfunction getNextUniqueId() {\n\treturn nextUniqueId++;\n}"},"hash":"aac8b625033456bcb7f312cf3bb007f4"}

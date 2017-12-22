@@ -1,1 +1,0 @@
-{"dependencies":[{"name":"../../modules/es6.number.min-safe-integer","loc":{"line":1,"column":8}}],"generated":{"js":"require('../../modules/es6.number.min-safe-integer');\nmodule.exports = -0x1fffffffffffff;\n"},"hash":"21f09b5160b3b36b38cfa0893935f95e"}

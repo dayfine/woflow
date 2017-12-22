@@ -1,1 +1,0 @@
-{"dependencies":[{"name":"core-js/library/fn/number/is-nan","loc":{"line":1,"column":38}}],"generated":{"js":"module.exports = { \"default\": require(\"core-js/library/fn/number/is-nan\"), __esModule: true };"},"hash":"226292ca83abada0c54b295def49e6b6"}

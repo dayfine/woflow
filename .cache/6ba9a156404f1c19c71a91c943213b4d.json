@@ -1,1 +1,0 @@
-{"dependencies":[{"name":"core-js/library/fn/number/min-safe-integer","loc":{"line":1,"column":38}}],"generated":{"js":"module.exports = { \"default\": require(\"core-js/library/fn/number/min-safe-integer\"), __esModule: true };"},"hash":"c0050d09e3f14de2afa06b9222d8b85a"}
