@@ -1,0 +1,1 @@
+{"dependencies":[],"generated":{"js":"\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nvar regExp = /([A-Z])/g;\nvar replace = function replace(str) {\n  return \"-\" + str.toLowerCase();\n};\n\nexports[\"default\"] = function (str) {\n  return str.replace(regExp, replace);\n};"},"hash":"b7ea8d4ea845fea570817f08954b6581"}

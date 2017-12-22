@@ -1,0 +1,1 @@
+{"dependencies":[],"generated":{"js":"\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n\tvalue: true\n});\nexports.default = stateId;\nfunction stateId() {\n\tvar state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;\n\n\treturn state + 1;\n}"},"hash":"a079b92b3f04dd8600eb0744deb58b51"}

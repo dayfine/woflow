@@ -1,0 +1,1 @@
+{"dependencies":[{"name":"../../modules/es6.number.is-nan","loc":{"line":1,"column":8}},{"name":"../../modules/_core","loc":{"line":2,"column":25}}],"generated":{"js":"require('../../modules/es6.number.is-nan');\nmodule.exports = require('../../modules/_core').Number.isNaN;\n"},"hash":"939b6b609a30bde6d46b505f0a44a515"}
