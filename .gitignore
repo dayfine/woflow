@@ -1,6 +1,8 @@
 .DS_Store
 package-lock.json
 presentation.md
+.cache
+dist/
 
 # Logs
 logs

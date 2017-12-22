@@ -14,20 +14,16 @@ import store from './store'
 import registerServiceWorker from './registerServiceWorker'
 
 // const { persistor, store } = configureStore()
-
-const theme = createMuiTheme({
-  palette: {
-    primary: {...lightBlue, contrastDefaultColor: 'light'},
-    secondary: {...pink, contrastDefaultColor: 'light'}
-  }
-})
-
+console.log('initiated')
 ReactDOM.render(
   <Provider store={store}>
-    <MuiThemeProvider theme={theme}>
-      <App />
-    </MuiThemeProvider>
+    <App />
   </Provider>,
   document.getElementById('root')
 )
+
 registerServiceWorker()
+
+if (module.hot) {
+  module.hot.accept()
+}

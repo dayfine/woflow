@@ -30,7 +30,7 @@ const NavBar = props => {
         <IconButton className={classes.menuButton} color='inherit' aria-label='Menu'>
           <Icon>menu</Icon>
         </IconButton>
-        <Typography type='title' type='display1' color='inherit' className={classes.flex}>
+        <Typography type='title' color='inherit' className={classes.flex}>
           Welcome to Woflow
         </Typography>
         <Button color='inherit'>Login</Button>

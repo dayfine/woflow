@@ -9,9 +9,6 @@ import blockMapper from '../util/blockMapper'
 import { withStyles } from 'material-ui/styles'
 import { GridList, GridListTile } from 'material-ui/GridList'
 
-import { DragDropContext } from 'react-dnd'
-import HTML5Backend from 'react-dnd-html5-backend'
-
 const styles = {
   gridList: {
     overflowY: 'scroll'
@@ -59,8 +56,8 @@ const mapState = state => {
   }
 }
 
-export default  DragDropContext(HTML5Backend)(
+export default
                 connect(mapState)(
                 withStyles(styles)(
                   Days
-                )))
+                ))
