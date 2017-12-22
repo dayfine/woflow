@@ -14,7 +14,7 @@ import store from './store'
 import registerServiceWorker from './registerServiceWorker'
 
 // const { persistor, store } = configureStore()
-
+console.log('initiated')
 ReactDOM.render(
   <Provider store={store}>
     <App />
@@ -25,5 +25,5 @@ ReactDOM.render(
 registerServiceWorker()
 
 if (module.hot) {
-  module.hot.accept();
+  module.hot.accept()
 }

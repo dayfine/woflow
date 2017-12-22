@@ -6,13 +6,13 @@ const
   cors = require('cors'),
   path = require('path'),
   db = require('./db'),
-  port = process.env.PORT || 8001
+  port = process.env.PORT || 3000
 
 let indexPath
 
 // Only serve build directory in production
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/build'))
+  app.use(express.static('/build'))
   indexPath = path.join(__dirname, '..', 'build', 'index.html')
 } else {
   indexPath = path.join(__dirname, '..', 'dist', 'index.html')
